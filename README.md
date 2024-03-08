@@ -1,4 +1,5 @@
-> NOTE This fork enables the SQLite [bytecode](byte) and [session](https://www.sqlite.org/sessionintro.html) extension.
+> NOTE This fork enables the SQLite [bytecode](byte) and
+> [session](https://www.sqlite.org/sessionintro.html) extension.
 
 # SQLite Wasm
 

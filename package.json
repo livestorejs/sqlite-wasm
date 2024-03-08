@@ -1,6 +1,6 @@
 {
   "name": "@livestore/sqlite-wasm",
-  "version": "3.46.0-build0",
+  "version": "3.46.0-build1",
   "description": "SQLite Wasm conveniently wrapped as an ES Module.",
   "keywords": [
     "sqlite",
@@ -26,6 +26,7 @@
       "types": "./index.d.ts",
       "import": "./index.mjs",
       "main": "./index.mjs",
+      "node": "./sqlite-wasm/jswasm/sqlite3-node.mjs",
       "browser": "./index.mjs"
     },
     "./package.json": "./package.json"
