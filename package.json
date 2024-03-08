@@ -1,6 +1,6 @@
 {
-  "name": "@sqlite.org/sqlite-wasm",
-  "version": "3.45.1-build1",
+  "name": "@livestore/sqlite-wasm",
+  "version": "3.46.0-build0",
   "description": "SQLite Wasm conveniently wrapped as an ES Module.",
   "keywords": [
     "sqlite",
@@ -36,7 +36,7 @@
   "scripts": {
     "publint": "npx publint",
     "clean": "shx rm -rf sqlite-wasm",
-    "build": "npm run clean && node bin/index.js",
+    "build": "echo Already manually built SQLite Wasm.",
     "start": "npx http-server --coop",
     "fix": "npx prettier . --write",
     "prepare": "npm run build && npm run fix && npm run publint",
@@ -46,7 +46,7 @@
     "type": "git",
     "url": "git+https://github.com/sqlite/sqlite-wasm.git"
   },
-  "author": "Thomas Steiner (tomac@google.com)",
+  "author": "Johannes Schickling",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/sqlite/sqlite-wasm/issues"

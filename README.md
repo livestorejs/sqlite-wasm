@@ -1,3 +1,5 @@
+> NOTE This fork enables the SQLite [bytecode](byte) and [session](https://www.sqlite.org/sessionintro.html) extension.
+
 # SQLite Wasm
 
 SQLite Wasm conveniently wrapped as an ES Module.
