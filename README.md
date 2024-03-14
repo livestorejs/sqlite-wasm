@@ -1,6 +1,38 @@
 > NOTE This fork enables the SQLite [bytecode](byte) and
 > [session](https://www.sqlite.org/sessionintro.html) extension.
 
+## Changes
+
+- Adds Node compatibility to regular entry point:
+
+```ts
+    function instantiateAsync(binary, binaryFile, imports, callback) {
+      if (
+        !binary &&
+        typeof WebAssembly.instantiateStreaming == 'function' &&
+        !isDataURI(binaryFile) &&
+        typeof fetch == 'function'
+      ) {
+        // added in this fork
+        const isNode =
+          typeof process !== 'undefined' &&
+          process.versions != null &&
+          process.versions.node != null;
+        if (isNode) {
+          return import('fs').then((fs) => {
+            const buffer = fs.readFileSync(binaryFile.replace('file://', ''));
+            const bytes = new Uint8Array(buffer);
+            return WebAssembly.instantiate(bytes, imports).then(callback);
+          });
+        }
+
+        return fetch(binaryFile, { credentials: 'same-origin' }).then(
+          // ...
+
+```
+
+---
+
 # SQLite Wasm
 
 SQLite Wasm conveniently wrapped as an ES Module.

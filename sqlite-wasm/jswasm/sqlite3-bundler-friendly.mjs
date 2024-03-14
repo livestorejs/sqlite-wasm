@@ -631,6 +631,18 @@ var sqlite3InitModule = (() => {
         !isDataURI(binaryFile) &&
         typeof fetch == 'function'
       ) {
+        const isNode =
+          typeof process !== 'undefined' &&
+          process.versions != null &&
+          process.versions.node != null;
+        if (isNode) {
+          return import('fs').then((fs) => {
+            const buffer = fs.readFileSync(binaryFile.replace('file://', ''));
+            const bytes = new Uint8Array(buffer);
+            return WebAssembly.instantiate(bytes, imports).then(callback);
+          });
+        }
+
         return fetch(binaryFile, { credentials: 'same-origin' }).then(
           (response) => {
             // Suppress closure warning here since the upstream definition for
